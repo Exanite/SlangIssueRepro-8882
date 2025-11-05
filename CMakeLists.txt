@@ -31,3 +31,10 @@ file(GLOB sources CONFIGURE_DEPENDS src/*.cpp)
 target_sources(Repro PRIVATE ${sources})
 
 target_link_libraries(Repro PRIVATE Slang)
+
+# --- Copy shared libraries ---
+
+add_custom_command(
+    TARGET Repro POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${SLANG_IMPORTED_LOCATION}" "$<TARGET_FILE_DIR:Repro>"
+)
