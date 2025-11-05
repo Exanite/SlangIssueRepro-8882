@@ -19,7 +19,7 @@ jobs:
 
       - name: Run
         run: |
-          ./build/Repro
+          ./build/Debug/Repro.exe
 
   linux:
     runs-on: ubuntu-24.04
